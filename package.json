@@ -7,7 +7,7 @@
     "test": "jest",
     "lint": "eslint ./lib --ext .js",
     "travis": "npm run lint",
-    "examples": "node ./examples/",
+    "examples": "chcp 65001 && node ./examples/",
     "doc": "docsify serve ./docs"
   },
   "repository": "https://github.com/qypt15/FFCreatorvideo",

@@ -6,7 +6,7 @@ const { FFCreatorCenter, FFScene, FFImage, FFText, FFVideo,FFVideoa, FFCreator }
 const createFFTask = () => {
   const img3 = path.join(__dirname, './assets/imgs/06.png');
   const logo = path.join(__dirname, './assets/imgs/logo/logo2.png');
-  const font = path.join(__dirname, './assets/font/scsf.ttf');
+  const font = path.join(__dirname, './assets/font/ysst.ttf');
   const audio = path.join(__dirname, './assets/audio/03.wav');
   const video1 = path.join(__dirname, './assets/video/video1.mp4');
   const video2 = path.join(__dirname, './assets/video/video2.mp4');
@@ -14,6 +14,7 @@ const createFFTask = () => {
   const cacheDir = path.join(__dirname, './cache/');
   const outputDir = path.join(__dirname, './output/');
 
+  console.log('font',font)
   // create creator instance
   const creator = new FFCreator({
     cacheDir,
