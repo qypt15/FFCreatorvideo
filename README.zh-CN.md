@@ -7,7 +7,7 @@
 ### Install npm Package
 
 ```javascript
-npm install ffcreatorvideo --save
+npm install ffvideo --save
 ```
 
 Note: To run the preceding commands, Node.js and npm must be installed.
@@ -15,7 +15,7 @@ Note: To run the preceding commands, Node.js and npm must be installed.
 #### Node.js
 
 ```javascript
-const { FFCreatorCenter, FFScene, FFImage, FFText, FFCreator } = require('ffcreatorvideo');
+const { FFCreatorCenter, FFScene, FFImage, FFText, FFCreator } = require('ffvideo');
 
 // create creator instance
 const creator = new FFCreator({
@@ -64,12 +64,12 @@ creator.addAudio(audio);
 creator.start();
 
 creator.on('progress', e => {
-  console.log(colors.yellow(`ffcreatorvideo progress: ${(e.percent * 100) >> 0}%`));
+  console.log(colors.yellow(`ffvideo progress: ${(e.percent * 100) >> 0}%`));
 });
 
 creator.on('complete', e => {
   console.log(
-    colors.magenta(`ffcreatorvideo completed: \n USEAGE: ${e.useage} \n PATH: ${e.output} `),
+    colors.magenta(`ffvideo completed: \n USEAGE: ${e.useage} \n PATH: ${e.output} `),
   );
 });
 ```
@@ -84,9 +84,9 @@ scene.setTransition('diagtl', 1.5);
 
 ## 安装依赖
 
-### `ffcreatorvideo`依赖于`FFmpeg`，因此您需要安装`FFmpeg`
+### `ffvideo`依赖于`FFmpeg`，因此您需要安装`FFmpeg`
 
-ffcreatorvideo 依赖于`FFmpeg>=0.9`以上版本。请设置 FFmpeg 为全局变量, 否则需要使用 setFFmpegPath 添加 FFmpeg 本机路径。(windows 用户的 ffmpeg 很可能不在您的`%PATH`中，因此您必须设置`%FFMPEG_PATH`)
+ffvideo 依赖于`FFmpeg>=0.9`以上版本。请设置 FFmpeg 为全局变量, 否则需要使用 setFFmpegPath 添加 FFmpeg 本机路径。(windows 用户的 ffmpeg 很可能不在您的`%PATH`中，因此您必须设置`%FFMPEG_PATH`)
 
 ```javascript
 FFCreator.setFFmpegPath('...');
@@ -103,7 +103,7 @@ FFCreator.setFFmpegPath('...');
 - How to Install FFmpeg on Windows [http://blog.gregzaal.com/how-to-install-ffmpeg-on-windows/](http://blog.gregzaal.com/how-to-install-ffmpeg-on-windows/)
 - How to Install FFmpeg on Mac OSX [https://trac.ffmpeg.org/wiki/CompilationGuide/macOS](https://trac.ffmpeg.org/wiki/CompilationGuide/macOS)
 
- 
+
 ## License
 
 [MIT](./LICENSE)

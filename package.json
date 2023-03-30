@@ -1,7 +1,7 @@
 {
-  "name": "ffcreatorvideo",
-  "version": "1.0.0",
-  "description": "ffcreatorvideo is a lightweight and flexible short video production library",
+  "name": "ffvideo",
+  "version": "1.0.2",
+  "description": "ffvideo is a lightweight and flexible short video production library",
   "main": "lib/index.js",
   "scripts": {
     "test": "jest",

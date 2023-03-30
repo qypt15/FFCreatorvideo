@@ -1,5 +1,5 @@
 [English](./README.md) | [简体中文](./README.zh-CN.md)
-###免责声明： 代码源于 [](https://github.com/drawcall/FFCreatorLite)   FFCreatorvideo 作为分支开发，二次开发，满足自己的需求；如侵权，联系调整
+###声明： 基于 [](https://github.com/drawcall/FFCreatorLite)   ffvideo 微调，满足自己的需求
 ### Features
 
 - Based on node.js development, it is very simple to use and easy to expand and develop.
@@ -16,7 +16,7 @@
 ### Install npm Package
 
 ```javascript
-npm install FFCreatorvideo --save
+npm install ffvideo --save
 ```
 
 Note: To run the preceding commands, Node.js and npm must be installed.
@@ -24,7 +24,7 @@ Note: To run the preceding commands, Node.js and npm must be installed.
 #### Node.js
 
 ```javascript
-const { FFCreatorCenter, FFScene, FFImage, FFText, FFCreator } = require('FFCreatorvideo');
+const { FFCreatorCenter, FFScene, FFImage, FFText, FFCreator } = require('ffvideo');
 
 // create creator instance
 const creator = new FFCreator({
@@ -73,19 +73,19 @@ creator.addAudio(audio);
 creator.start();
 
 creator.on('progress', e => {
-  console.log(colors.yellow(`FFCreatorvideo progress: ${(e.percent * 100) >> 0}%`));
+  console.log(colors.yellow(`ffvideo progress: ${(e.percent * 100) >> 0}%`));
 });
 
 creator.on('complete', e => {
   console.log(
-    colors.magenta(`FFCreatorvideo completed: \n USEAGE: ${e.useage} \n PATH: ${e.output} `),
+    colors.magenta(`ffvideo completed: \n USEAGE: ${e.useage} \n PATH: ${e.output} `),
   );
 });
 ```
 
 ## About Transition
 
-The latest version of FFCreatorvideo already supports scene transition animation, which means you can use it to make cool effects like ffcreator.
+The latest version of ffvideo already supports scene transition animation, which means you can use it to make cool effects like ffcreator.
 
 Of course you need to install [4.3.0](https://stackoverflow.com/questions/60704545/xfade-filter-not-available-with-ffmpeg) above version of ffmpeg. Because here is the [Xfade](https://trac.ffmpeg.org/wiki/Xfade) filter to achieve Animation.
 
@@ -98,9 +98,9 @@ scene.setTransition('diagtl', 1.5);
 
 ## Installation
 
-### `FFCreatorvideo` depends on `FFmpeg`, so you need to install `FFmpeg`
+### `ffvideo` depends on `FFmpeg`, so you need to install `FFmpeg`
 
-FFCreatorvideo depends on `FFmpeg>=0.9` and above. Please set FFmpeg as a global variable, otherwise you need to use setFFmpegPath to add FFmpeg native path. (The ffmpeg for windows users is probably not in your `%PATH`, so you must set `%FFMPEG_PATH`)
+ffvideo depends on `FFmpeg>=0.9` and above. Please set FFmpeg as a global variable, otherwise you need to use setFFmpegPath to add FFmpeg native path. (The ffmpeg for windows users is probably not in your `%PATH`, so you must set `%FFMPEG_PATH`)
 
 ```javascript
 FFCreator.setFFmpegPath('...');
@@ -119,7 +119,7 @@ Of course, you can also compile ffmpeg on your machine, please see [https://trac
 
 ## Contribute
 
-You are very welcome to join us in developing `FFCreatorvideo`, if you want to contribute code, please read [here](./CONTRIBUTING.md).
+You are very welcome to join us in developing `ffvideo`, if you want to contribute code, please read [here](./CONTRIBUTING.md).
 
 ## License
 
