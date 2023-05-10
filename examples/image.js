@@ -24,10 +24,13 @@ const createImageAnimation = () => {
     log: true,
     //debug: true,
     audio,
+    blankPng:'../assets/blank.png',
   });
 
   // create FFScene
-  const scene1 = new FFScene();
+  const scene1 = new FFScene({
+    blankPng:'../assets/blank.png',
+  });
   const scene2 = new FFScene();
   scene1.setBgColor('#ff0000');
   scene2.setBgColor('#b33771');
