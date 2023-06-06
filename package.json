@@ -8,6 +8,8 @@
     "lint": "eslint ./lib --ext .js",
     "travis": "npm run lint",
     "examples": "chcp 65001 && node ./examples/",
+    "dev": "chcp 65001 && node ./examples/dev.js",
+    "devff": "chcp 65001 && node ./examples/dev-ff.js",
     "doc": "docsify serve ./docs"
   },
   "repository": "https://github.com/qypt15/FFCreatorvideo",

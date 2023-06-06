@@ -29,6 +29,10 @@ const choices = [
     value: 'transition',
   },
   {
+    name: 'test',
+    value: 'test',
+  },
+  {
     name: 'videoa',
     value: 'videoa',
   },
