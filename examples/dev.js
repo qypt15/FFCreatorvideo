@@ -3,6 +3,11 @@ const colors = require('colors');
 
 const { FFCreatorCenter, FFScene, FFImage, FFText, FFVideo,FFVideoa, FFCreator } = require('../');
 
+// 创作者
+// 镜头：
+
+// 合成
+
 
 const createFFTask = () => {
   const img3 = path.join(__dirname, './assets/imgs/06.png');
@@ -15,13 +20,17 @@ const createFFTask = () => {
   const cacheDir = path.join(__dirname, './cache/');
   const outputDir = path.join(__dirname, './output/');
 
+  const width = 576;
+  const height = 1024;
+
   // create creator instance
   const creator = new FFCreator({
     cacheDir,
     outputDir,
-    width: 576,
-    height: 1024,
-    log: true,
+    width: width,
+    height: height,
+    log: false,
+    debug:false,
     //audio,
   });
 
@@ -33,13 +42,34 @@ const createFFTask = () => {
   const scene1 = new FFScene();
 
   scene1.setBgColor('#9980fa');
-  
-  const fvideo1 = new FFVideoa({ path: video1, audio: true, y: 0,x:200,ss:1.2,tt:6.3});
+
+  // 视频转换格式 + 随机截取视频
+  // const trans1 = new FFVTrans({ path: video1,tt:6.3});
+  // trans1.start();
+  let tt = 5
+
+  // const fvideo = new FFVideo({
+  // 	path: video.url,
+  // 	// w:width,
+  // 	// h:height,
+  // 	x:width/2,
+  // 	y:height/2,
+
+  // });
+
+  const fvideo1 = new FFVideoa({
+    path: video1,
+     audio: true,
+    x:0,
+    y:height/3*1,
+
+     tt
+     });
   fvideo1.setScale(0.6);
   fvideo1.getConf();
 
   scene1.addChild(fvideo1);
-
+  scene1.setDuration(tt);
   // const fvideo2 = new FFVideo({ path: video2, audio: false,  x: 300, y: 330 });
   // fvideo2.setScale(0.3);
   // fvideo2.addEffect('moveInRight', 2.5, 3.5);
@@ -67,7 +97,6 @@ const createFFTask = () => {
   creator.openLog();
 
   creator.on('start', () => {
-     console.log('start-2')
     console.log(`FFCreatorLite start`);
   });
 
