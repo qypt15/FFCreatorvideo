@@ -1,7 +1,7 @@
 const path = require('path');
 const colors = require('colors');
 
-const { FFCreatorCenter, FFScene, FFImage, FFText, FFVideo,FFVideoa, FFCreator } = require('../');
+const { FFCreatorCenter, FFScene, FFImage, FFText, FFVideo,FFVideoa, FFCreator,FFContext } = require('../');
 
 // 创作者
 // 镜头：
@@ -12,8 +12,10 @@ const { FFCreatorCenter, FFScene, FFImage, FFText, FFVideo,FFVideoa, FFCreator }
 const createFFTask = () => {
   const img3 = path.join(__dirname, './assets/imgs/06.png');
   const logo = path.join(__dirname, './assets/imgs/logo/logo2.png');
-  const font = path.join(__dirname, './assets/font/scsf.ttf');
-
+  let font = path.join(__dirname, './assets/font/scsf.ttf');
+  console.log('font1',font)
+  font = font.replace(/\\/g,"/");
+  console.log('font2',font)
   const audio = path.join(__dirname, './assets/audio/03.wav');
   const mp3 = path.join(__dirname, './assets/audio/a0.mp3');
 
@@ -36,73 +38,103 @@ const createFFTask = () => {
     height: height,
     log: false,
     debug:true,
-    audio:mp3,
+
   });
 
-  // creator.addAudio(audio)
+   creator.addAudio(audio)
    console.log('audio-mp3',mp3)
-
 
   // create FFScene
   const scene1 = new FFScene();
 
   scene1.setBgColor('#9980fa');
-
-  // 视频转换格式 + 随机截取视频
-  // const trans1 = new FFVTrans({ path: video1,tt:6.3});
-  // trans1.start();
-  let tt = 20
-
-  // const fvideo = new FFVideo({
-  // 	path: video.url,
-  // 	// w:width,
-  // 	// h:height,
-  // 	x:width/2,
-  // 	y:height/2,
-
-  // });
-
+  let tt = 8
   const fvideo1 = new FFVideoa({
-      path: video3,
+      path: video1,
        audio: true,
       x:0,
       y:height/3*1,
        tt
     });
 
- fvideo1.on('progress', e => {
-   // console.log(`FFVideoa -progress-进度 `,e);
-   console.log(colors.yellow(`FFVideoa-模块 :  ${(e.percent) >> 0}%`));
- });
+  fvideo1.on('progress', e => {
+   console.log(colors.yellow(`第1个视频-转换 :  ${(e.percent) >> 0}%`));
+  });
+
+  fvideo1.on('complete', e => {
+   console.log(colors.yellow(`第1个视频-转换 完成`));
+  });
 
   fvideo1.setScale(0.6);
   fvideo1.getConf();
   fvideo1.setAudio(true);
+  // 设置动画效果
+  fvideo1.addEffect('moveInRight', 2.5, 0.2);
 
   scene1.addChild(fvideo1);
+
+
+
   scene1.setDuration(tt);
+  //
+  // const s1_context = new FFContext({ input: "input-FFContext"});
+  // scene1.addChild(s1_context);
+
   // const fvideo2 = new FFVideo({ path: video2, audio: false,  x: 300, y: 330 });
   // fvideo2.setScale(0.3);
   // fvideo2.addEffect('moveInRight', 2.5, 3.5);
   // scene1.addChild(fvideo2);
 
-  // const fimg3 = new FFImage({ path: img3, x: 60, y: 600 });
-  // fimg3.setScale(0.4);
-  // fimg3.addEffect('rotateInBig', 2.5, 1.5);
-  // scene1.addChild(fimg3);
+  const s1_img1 = new FFImage({ path: img3, x: 60, y: 600 });
+  s1_img1.setScale(0.4);
+  s1_img1.addEffect('rotateInBig', 2.5, 1.5);
+  scene1.addChild(s1_img1);
 
-  // const text1 = new FFText({ text: 'FFVideo案例', font, x: 140, y: 100, fontSize: 42 });
-  // text1.setColor('#ffffff');
-  // text1.setBorder(5, '#000000');
-  // //text1.addEffect('fadeIn', 2, 1);
-  // scene1.addChild(text1);
+  // 文字
 
-  //  scene1.setDuration(17);
+  const text1 = new FFText({ text: 'FFVideo案例', font:font, x: 140, y: 100, fontSize: 42 });
+  text1.setColor('#ffffff');
+  text1.setBorder(5, '#000000');
+  //text1.addEffect('fadeIn', 2, 1);
+  scene1.addChild(text1);
+  scene1.setTransition('slideright', 1.5);    // 转场-设置过渡动画(类型, 时间)
 
+
+  //
   creator.addChild(scene1);
 
-  // const scene2 = new FFScene();
-  // scene2.setBgColor('#ea2228');
+  // create FFScene
+   const scene2= new FFScene();
+   scene2.setBgColor('#0980fa');
+   let tt2 = 8
+   const fvideo2 = new FFVideoa({
+       path: video2,
+        audio: true,
+         x:0,
+         y:height/3*1,
+        tt:tt2
+     });
+  fvideo2.on('progress', e => {
+    console.log(colors.yellow(`第2个视频-转换 :  ${(e.percent) >> 0}%`));
+  });
+fvideo2.addEffect('moveInRight', 2.5, 0.2);
+   fvideo2.on('complete', e => {
+     console.log(colors.yellow(`第2个视频-转换 完成`));
+   });
+   fvideo2.setScale(0.6);
+   fvideo2.setAudio(true);
+
+   scene2.addChild(fvideo2);
+   scene2.setDuration(tt2);
+
+   const text2 = new FFText({ text: '案例66', font, x: 140, y: 100, fontSize: 42 });
+   text2.setColor('#56ff12');
+   text2.setBorder(5, '#000000');
+   text2.addEffect('fadeIn', 2, 1);
+   scene2.addChild(text2);
+
+   creator.addChild(scene2);
+
 
   creator.start();
   creator.openLog();
