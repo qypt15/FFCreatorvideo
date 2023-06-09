@@ -13,9 +13,14 @@ const createFFTask = () => {
   const img3 = path.join(__dirname, './assets/imgs/06.png');
   const logo = path.join(__dirname, './assets/imgs/logo/logo2.png');
   const font = path.join(__dirname, './assets/font/scsf.ttf');
+
   const audio = path.join(__dirname, './assets/audio/03.wav');
+  const mp3 = path.join(__dirname, './assets/audio/a0.mp3');
+
   const video1 = path.join(__dirname, './assets/video/video1.mp4');
   const video2 = path.join(__dirname, './assets/video/video2.mp4');
+  const video3 = path.join(__dirname, './assets/video/a.MP4');
+  const video4 = path.join(__dirname, './assets/video/01.mp4');
 
   const cacheDir = path.join(__dirname, './cache/');
   const outputDir = path.join(__dirname, './output/');
@@ -30,12 +35,12 @@ const createFFTask = () => {
     width: width,
     height: height,
     log: false,
-    debug:false,
-    //audio,
+    debug:true,
+    audio:mp3,
   });
 
-  // console.log('creator',creator)
-
+  // creator.addAudio(audio)
+   console.log('audio-mp3',mp3)
 
 
   // create FFScene
@@ -46,7 +51,7 @@ const createFFTask = () => {
   // 视频转换格式 + 随机截取视频
   // const trans1 = new FFVTrans({ path: video1,tt:6.3});
   // trans1.start();
-  let tt = 5
+  let tt = 20
 
   // const fvideo = new FFVideo({
   // 	path: video.url,
@@ -58,15 +63,21 @@ const createFFTask = () => {
   // });
 
   const fvideo1 = new FFVideoa({
-    path: video1,
-     audio: true,
-    x:0,
-    y:height/3*1,
+      path: video3,
+       audio: true,
+      x:0,
+      y:height/3*1,
+       tt
+    });
 
-     tt
-     });
+ fvideo1.on('progress', e => {
+   // console.log(`FFVideoa -progress-进度 `,e);
+   console.log(colors.yellow(`FFVideoa-模块 :  ${(e.percent) >> 0}%`));
+ });
+
   fvideo1.setScale(0.6);
   fvideo1.getConf();
+  fvideo1.setAudio(true);
 
   scene1.addChild(fvideo1);
   scene1.setDuration(tt);
@@ -104,7 +115,12 @@ const createFFTask = () => {
     console.log(`FFCreatorLite error:: \n ${e.error}`);
   });
 
+  creator.on('module-progress', e => {
+     // console.log(`FFCreatorLite -progress-进度 `,e);
+    console.log(colors.yellow(`模块 :${e.model_key},${e.model_name}, ${(e.percent * 100) >> 0}%`));
+  });
   creator.on('progress', e => {
+     // console.log(`FFCreatorLite -progress-进度 `,e);
     console.log(colors.yellow(`FFCreatorLite progress: ${(e.percent * 100) >> 0}%`));
   });
 
