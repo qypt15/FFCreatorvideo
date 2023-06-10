@@ -18,8 +18,11 @@ const ffcreateTask = () => {
   const logo = path.join(__dirname, './assets/imgs/logo/logo2.png');
   const bg1 = path.join(__dirname, './assets/imgs/wallp/02.jpeg');
   const bg2 = path.join(__dirname, './assets/imgs/wallp/04.jpeg');
-  const font1 = path.join(__dirname, './assets/font/ysst.ttf');
-  const font2 = path.join(__dirname, './assets/font/jdnt.ttf');
+  let font1 = path.join(__dirname, './assets/font/ysst.ttf');
+  let font2 = path.join(__dirname, './assets/font/jdnt.ttf');
+   font1 = font1.replace(/\\/g,"/");
+   font2 = font2.replace(/\\/g,"/");
+
   const audio = path.join(__dirname, './assets/audio/02.wav');
   const outputDir = path.join(__dirname, './output/');
   const cacheDir = path.join(__dirname, './cache/');

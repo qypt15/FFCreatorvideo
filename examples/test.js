@@ -7,7 +7,8 @@ const { FFCreatorCenter, FFScene, FFImage, FFText, FFVideo, FFCreator } = requir
 const createFFTask = () => {
   const img3 = path.join(__dirname, './assets/imgs/06.png');
   const logo = path.join(__dirname, './assets/imgs/logo/logo2.png');
-  const font = path.join(__dirname, './assets/font/scsf.ttf');
+  let font = path.join(__dirname, './assets/font/scsf.ttf');
+  font = font.replace(/\\/g,"/");
   const audio = path.join(__dirname, './assets/audio/03.wav');
   const video1 = path.join(__dirname, './assets/video/video1.mp4');
   const video2 = path.join(__dirname, './assets/video/video2.mp4');
@@ -22,7 +23,8 @@ const createFFTask = () => {
     width: 576,
     height: 1024,
     log: true,
-    //audio,
+    debug: true,
+    audio,
   });
 
   // create FFScene

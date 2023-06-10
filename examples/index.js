@@ -13,20 +13,24 @@ const clearAllFiles = () => {
 
 const choices = [
   {
-    name: 'Picture animation video',
+    name: 'image-Picture animation video',
     value: 'image',
   },
   {
-    name: 'Multiple text combinations',
+    name: 'text-Multiple text combinations',
     value: 'text',
   },
   {
-    name: 'Animation effect display',
+    name: 'animate-Animation effect display',
     value: 'animate',
   },
   {
-    name: 'Scene transition effect',
+    name: 'transition-Scene transition effect',
     value: 'transition',
+  },
+  {
+    name: 'dev-test',
+    value: 'dev-test',
   },
   {
     name: 'test',
@@ -37,15 +41,15 @@ const choices = [
     value: 'videoa',
   },
   {
-    name: 'Video animation demo',
+    name: 'video-Video animation demo',
     value: 'video',
   },
   {
-    name: 'Push live rtmp stream',
+    name: 'live-Push live rtmp stream',
     value: 'live',
   },
   {
-    name: 'Clear all caches and videos',
+    name: 'clear-Clear all caches and videos',
     value: 'clear',
     func: clearAllFiles,
   },
